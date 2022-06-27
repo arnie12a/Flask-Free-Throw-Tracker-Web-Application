@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} Shooting Statistics {% endblock %}
+{% block body %}
+
+<div style="text-align: center;">
+    <a href="/">Back to Home Page</a>
+    <h1>Arnav's Free Throw Shooting Distribution</h1>
+    <h3>Free Throw Percentage: {{shootingPercentage}}%</h3>
+    <h4>Last 5 Free Throw Session Percentage: {{last5}}%</h4>
+</div>
+<br>
+
+
+<div style="text-align: center;">
+    <div>
+        <img src="/semiPieChart.svg">
+    </div>
+    
+    <br><br>
+    <div>
+        <img src="/dashboard.svg">
+    </div>
+    
+</div>
+<br><br><br>
+<div style="text-align: center;">
+    <table>
+    <tr>
+        <th>Location</th>
+        <th>FT Percentage</th>
+    </tr>
+    {% for key, value in sorted_dict.items() %}
+    <tr>
+        <td>{{key}}</td>
+        <td>{{value }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    
+</div>
+
+
+<style>
+    table{
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
+{% endblock %}
+
